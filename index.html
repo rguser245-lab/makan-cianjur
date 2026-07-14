@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <title>makan.cianjur - Kuliner Cianjur</title>
+
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/base.css">
+
+    <script src="js/home/filter.js" defer></script>
+    <script src="js/home/search.js" defer></script>
+    <script src="js/home/app.js" defer></script>
+    <script src="js/home/slider.js" defer></script>
+
+    <script src="js/store/opening-hours.js" defer></script>
+    <script src="js/store/language.js" defer></script>
+    <script src="js/store/location.js" defer></script>
+
+</head>
+<body>
+
+    <div id="sidebar" class="sidebar">
+        <button type="button" id="close-sidebar" class="btn-close-sidebar">&times;</button>
+        <div class="sidebar-content">
+            <div class="sidebar-section theme-section">
+                <span data-lang-key="themeLabel" class="sidebar-label">Mode Gelap</span>
+                <div class="theme-switch-container">
+                    <label class="theme-switch">
+                        <input type="checkbox" id="theme-checkbox" aria-label="Ubah Tema">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+
+            <hr class="sidebar-divider">
+
+            <div class="sidebar-section">
+                <h4 data-lang-key="footerContact">Customer Service</h4>
+                <p><a href="https://wa.me/62895401479040" target="_blank" data-lang-key="footerContactText">Hubungi No WhatsApp</a></p>
+            </div>
+
+            <div class="sidebar-section">
+                <h4 data-lang-key="footerSupport">Dukung Kreator</h4>
+                <p><a href="https://sociabuzz.com/rguser245" target="_blank" data-lang-key="footerSupportText">Dukung via SociaBuzz</a></p>
+            </div>
+
+            <div class="sidebar-section">
+                <h4 data-lang-key="footerSocial">Tentang Saya</h4>
+                <a href="https://instagram.com/f_nature245" target="_blank">Instagram</a>
+                <a href="https://facebook.com/search/top/?q=Rizky%20Rahman" target="_blank">Facebook</a>
+            </div>
+
+            <div class="sidebar-section">
+                <h4 data-lang-key="footerInfo">Ingin Kuliner Anda Disini?</h4>
+                <p data-lang-key="footerInfoText">Promosikan cafe/resto Anda agar dilihat oleh ribuan pengguna.</p>
+                <a data-lang-key="tombol"
+                href="https://wa.me/62895401479040?text=Halo%20Admin,%20saya%20mau%20daftar%20toko%20di%20makan.cianjur"
+                target="_blank"
+                class="btn-daftar-toko">
+                Daftar Toko / Pasang Iklan
+                </a>
+            </div>
+            <div class="sidebar-copyright">
+                © 2026 Rizky Rahman.
+            </div>
+        </div>
+    </div>
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+    <header>
+        <div class="header-left">
+            <button type="button" id="hamburger-toggle" class="btn-hamburger" aria-label="Menu">☰</button>
+            <div class="logo">makan.cianjur</div>
+        </div>
+        <div class="search-container">
+            <span class="search-icon"></span>
+            <input type="text" id="search-input" data-lang-key="searchPlaceholder" placeholder="Cari kuliner...">
+        </div>
+        <nav>
+            <button type="button" id="lang-toggle" class="btn-lang">EN</button>
+        </nav>
+    </header>
+
+    <main>
+
+        <div class="steam-slider-container">
+            <div class="steam-slider">
+                <div class="steam-slide active">
+                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200" alt="Promo Kuliner 1">
+                    <div class="steam-slide-info">
+                        <h3>Promo Spesial Gajian!</h3>
+                        <p>Diskon hingga 50% di berbagai merchant terpilih Cianjur.</p>
+                    </div>
+                </div>
+
+                <div class="steam-slide">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=1200" alt="Promo Kuliner 2">
+                    <div class="steam-slide-info">
+                        <h3>Rekomendasi Minggu Ini</h3>
+                        <p>Cobain sensasi pedas nampol dari kuliner hits terbaru.</p>
+                    </div>
+                </div>
+
+                <div class="steam-slide">
+                    <img src="https://images.unsplash.com/photo-1493770348161-369560ae357d?w=1200" alt="Promo Kuliner 3">
+                    <div class="steam-slide-info">
+                        <h3>Kopi Sore Santai</h3>
+                        <p>Kumpulan cafe estetik dengan tempat nongkrong paling cozy.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="steam-slider-dots">
+                <span class="dot active" onclick="pindahSlide(0)"></span>
+                <span class="dot" onclick="pindahSlide(1)"></span>
+                <span class="dot" onclick="pindahSlide(2)"></span>
+            </div>
+        </div>
+
+        <section class="hero">
+            <h1 data-lang-key="heroTitle">Kuliner Cianjur</h1>
+            <p data-lang-key="heroDesc">Pilihan tempat makan paling mantap &amp; hits.</p>
+            <button type="button" id="find-nearest" data-lang-key="btnNearest" class="btn-nearest">Cari Kuliner Terdekat</button>
+        </section>
+
+
+        <section class="kategori-container">
+            <button type="button" class="kategori-pill active" data-filter="semua">All</button>
+            <button type="button" class="kategori-pill" data-filter="cafe">Cafe</button>
+            <button type="button" class="kategori-pill" data-filter="resto">Resto</button>
+            <button type="button" class="kategori-pill" data-filter="jajanan">Jajanan</button>
+            <button type="button" class="kategori-pill" data-filter="kopi">Kopi</button>
+            <button type="button" class="kategori-pill" data-filter="hidden">Hidden</button>
+        </section>
+
+        <section class="grid-toko" id="shop-grid">
+
+            <!--awal page toko-->
+            <a href="daftar-penjual/depdoo/depdoo.html" class="card-toko" data-lat="-6.8143" data-lon="107.1451" data-kategori="cafe & resto">
+                <div class="img-container">
+                    <img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAGeDxQhawUV6m1V6XRG-Ua6mwR7FOKa2p-Gh4foJBTKzDM37LeBazC4-dIrNEUwVXOXjXRWJXeA4Ih9Uw4BPO_xUMcgTw9oWh8x7hLkmjcuEF8UbuMCDNUQW6o_n73wHNbYDZ0=s680-w680-h510-rw" alt="Depdoo Cafe">
+                </div>
+                <div class="card-info">
+                    <div>
+                        <div class="card-header-meta">
+                            <span class="kategori">Cafe &amp; Resto</span>
+                            <span id="status-detail" class="status-toko"></span>
+                        </div>
+                        <h3>Depdoo - Depot Pedoo</h3>
+                        <div class="jam-operasional"></div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="rating">⭐ 4.3</div>
+                        <div class="lokasi">📍 Sawah Gede<span class="jarak"></span></div>
+                    </div>
+                </div>
+                <div class="btn-detail" data-lang-key="btnDetail">Lihat Info</div>
+                <ul class="jadwal-list">
+                    <li data-hari="0" data-buka="540" data-tutup="1260"><span class="jam">9.00 am–9.00 pm</span></li>
+                    <li data-hari="1" data-buka="660" data-tutup="1260"><span class="jam">11.00 am–9.00 pm</span></li>
+                    <li data-hari="2" data-buka="660" data-tutup="1260"><span class="jam">11.00 am–9.00 pm</span></li>
+                    <li data-hari="3" data-buka="660" data-tutup="1260"><span class="jam">11.00 am–9.00 pm</span></li>
+                    <li data-hari="4" data-buka="660" data-tutup="1260"><span class="jam">11.00 am–9.00 pm</span></li>
+                    <li data-hari="5" data-libur="true"><span class="jam">Closed</span></li>
+                    <li data-hari="6" data-buka="540" data-tutup="1320"><span class="jam">9.00 am–10.00 pm</span></li>
+                </ul>
+            </a>
+            <!--akkhir page toko-->
+            <!--awal page toko-->
+            <a href="" class="card-toko" data-lat="-6.8143" data-lon="107.1451" data-kategori="kopi">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=800&h=600&fit=crop&auto=format" alt="Kopi Senja Cianjur">
+                </div>
+                <div class="card-info">
+                    <div>
+                        <div class="card-header-meta">
+                            <span class="kategori">Kopi</span>
+                            <span id="status-detail" class="status-toko"></span>
+                        </div>
+                        <h3>Kopi Senja Cianjur</h3>
+                        <div class="jam-operasional"></div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="rating">⭐ 4.6</div>
+                        <div class="lokasi">📍 Pamoyanan<span class="jarak"></span></div>
+                    </div>
+                </div>
+                <div class="btn-detail" data-lang-key="btninfo">comingsoon</div>
+                <ul class="jadwal-list">
+                    <li data-hari="0" data-buka="480" data-tutup="1320"><span class="jam">8.00 am–10.00 pm</span></li>
+                    <li data-hari="1" data-buka="420" data-tutup="1320"><span class="jam">7.00 am–10.00 pm</span></li>
+                    <li data-hari="2" data-buka="420" data-tutup="1320"><span class="jam">7.00 am–10.00 pm</span></li>
+                    <li data-hari="3" data-buka="420" data-tutup="1320"><span class="jam">7.00 am–10.00 pm</span></li>
+                    <li data-hari="4" data-buka="420" data-tutup="1320"><span class="jam">7.00 am–10.00 pm</span></li>
+                    <li data-hari="5" data-libur="true"><span class="jam">Closed</span></li>
+                    <li data-hari="6" data-buka="420" data-tutup="1380"><span class="jam">7.00 am–11.00 pm</span></li>
+                </ul>
+            </a>
+            <!--akkhir page toko-->
+            <!--awal page toko-->
+            <a href="" class="card-toko" data-lat="-6.8143" data-lon="107.1451" data-kategori="resto">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1680674814945-7945d913319c?w=800&h=600&fit=crop&auto=format" alt="Waroeng Pak Ujang">
+                </div>
+                <div class="card-info">
+                    <div>
+                        <div class="card-header-meta">
+                            <span class="kategori">Resto</span>
+                            <span id="status-detail" class="status-toko"></span>
+                        </div>
+                        <h3>Waroeng Pak Ujang</h3>
+                        <div class="jam-operasional"></div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="rating">⭐ 4.5</div>
+                        <div class="lokasi">📍 Bojongherang<span class="jarak"></span></div>
+                    </div>
+                </div>
+                <div class="btn-detail" data-lang-key="btninfo">comingsoon</div>
+                <ul class="jadwal-list">
+                    <li data-hari="0" data-buka="600" data-tutup="1260"><span class="jam">10.00 am–9.00 pm</span></li>
+                    <li data-hari="1" data-buka="540" data-tutup="1260"><span class="jam">9.00 am–9.00 pm</span></li>
+                    <li data-hari="2" data-buka="540" data-tutup="1260"><span class="jam">9.00 am–9.00 pm</span></li>
+                    <li data-hari="3" data-buka="540" data-tutup="1260"><span class="jam">9.00 am–9.00 pm</span></li>
+                    <li data-hari="4" data-buka="540" data-tutup="1260"><span class="jam">9.00 am–9.00 pm</span></li>
+                    <li data-hari="5" data-libur="true"><span class="jam">Closed</span></li>
+                    <li data-hari="6" data-buka="540" data-tutup="1320"><span class="jam">9.00 am–10.00 pm</span></li>
+                </ul>
+            </a>
+            <!--akkhir page toko-->
+            <!--awal page toko-->
+            <a href="" class="card-toko" data-lat="-6.8143" data-lon="107.1451" data-kategori="cafe">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1525193612562-0ec53b0e5d7c?w=800&h=600&fit=crop&auto=format" alt="Kedai Embun Pagi">
+                </div>
+                <div class="card-info">
+                    <div>
+                        <div class="card-header-meta">
+                            <span class="kategori">Cafe</span>
+                            <span id="status-detail" class="status-toko"></span>
+                        </div>
+                        <h3>Kedai Embun Pagi</h3>
+                        <div class="jam-operasional"></div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="rating">⭐ 4.4</div>
+                        <div class="lokasi">📍 Pasirsembung<span class="jarak"></span></div>
+                    </div>
+                </div>
+                <div class="btn-detail" data-lang-key="btninfo">comingsoon</div>
+                <ul class="jadwal-list">
+                    <li data-hari="0" data-buka="480" data-tutup="1200"><span class="jam">8.00 am–8.00 pm</span></li>
+                    <li data-hari="1" data-buka="480" data-tutup="1200"><span class="jam">8.00 am–8.00 pm</span></li>
+                    <li data-hari="2" data-buka="480" data-tutup="1200"><span class="jam">8.00 am–8.00 pm</span></li>
+                    <li data-hari="3" data-buka="480" data-tutup="1200"><span class="jam">8.00 am–8.00 pm</span></li>
+                    <li data-hari="4" data-buka="480" data-tutup="1200"><span class="jam">8.00 am–8.00 pm</span></li>
+                    <li data-hari="5" data-buka="480" data-tutup="1200"><span class="jam">8.00 am–8.00 pm</span></li>
+                    <li data-hari="6" data-buka="480" data-tutup="1260"><span class="jam">8.00 am–9.00 pm</span></li>
+                </ul>
+            </a>
+            <!--akkhir page toko-->
+            <!--awal page toko-->
+            <a href="" class="card-toko" data-lat="-6.8143" data-lon="107.1451" data-kategori="jajanan">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1681378128359-a5c2492a3535?w=800&h=600&fit=crop&auto=format" alt="Jajanan Bu Inah">
+                </div>
+                <div class="card-info">
+                    <div>
+                        <div class="card-header-meta">
+                            <span class="kategori">Jajanan</span>
+                            <span id="status-detail" class="status-toko"></span>
+                        </div>
+                        <h3>Jajanan Bu Inah</h3>
+                        <div class="jam-operasional"></div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="rating">⭐ 4.7</div>
+                        <div class="lokasi">📍 Sayang<span class="jarak"></span></div>
+                    </div>
+                </div>
+                <div class="btn-detail" data-lang-key="btninfo">comingsoon</div>
+                <ul class="jadwal-list">
+                    <li data-hari="0" data-buka="420" data-tutup="1020"><span class="jam">7.00 am–5.00 pm</span></li>
+                    <li data-hari="1" data-buka="420" data-tutup="1020"><span class="jam">7.00 am–5.00 pm</span></li>
+                    <li data-hari="2" data-buka="420" data-tutup="1020"><span class="jam">7.00 am–5.00 pm</span></li>
+                    <li data-hari="3" data-buka="420" data-tutup="1020"><span class="jam">7.00 am–5.00 pm</span></li>
+                    <li data-hari="4" data-buka="420" data-tutup="1020"><span class="jam">7.00 am–5.00 pm</span></li>
+                    <li data-hari="5" data-libur="true"><span class="jam">Closed</span></li>
+                    <li data-hari="6" data-buka="420" data-tutup="1080"><span class="jam">7.00 am–6.00 pm</span></li>
+                </ul>
+            </a>
+            <!--akkhir page toko-->
+            <!--awal page toko-->
+            <a href="" class="card-toko" data-lat="-6.8143" data-lon="107.1451" data-kategori="cafe & resto">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1539755530862-00f623c00f52?w=800&h=600&fit=crop&auto=format" alt="Dapur Nusantara">
+                </div>
+                <div class="card-info">
+                    <div>
+                        <div class="card-header-meta">
+                            <span class="kategori">Cafe &amp; Resto</span>
+                            <span id="status-detail" class="status-toko"></span>
+                        </div>
+                        <h3>Dapur Nusantara</h3>
+                        <div class="jam-operasional"></div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="rating">⭐ 4.2</div>
+                        <div class="lokasi">📍 Nagrak<span class="jarak"></span></div>
+                    </div>
+                </div>
+                <div class="btn-detail" data-lang-key="btninfo">comingsoon</div>
+                <ul class="jadwal-list">
+                    <li data-hari="0" data-buka="600" data-tutup="1320"><span class="jam">10.00 am–10.00 pm</span></li>
+                    <li data-hari="1" data-buka="600" data-tutup="1320"><span class="jam">10.00 am–10.00 pm</span></li>
+                    <li data-hari="2" data-buka="600" data-tutup="1320"><span class="jam">10.00 am–10.00 pm</span></li>
+                    <li data-hari="3" data-buka="600" data-tutup="1320"><span class="jam">10.00 am–10.00 pm</span></li>
+                    <li data-hari="4" data-buka="600" data-tutup="1320"><span class="jam">10.00 am–10.00 pm</span></li>
+                    <li data-hari="5" data-libur="true"><span class="jam">Closed</span></li>
+                    <li data-hari="6" data-buka="600" data-tutup="1380"><span class="jam">10.00 am–11.00 pm</span></li>
+                </ul>
+            </a>
+            <!--akkhir page toko-->
+            <!--awal page toko-->
+            <a href="" class="card-toko" data-lat="-6.8143" data-lon="107.1451" data-kategori="resto">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1682139710677-cb02f6bc4211?w=800&h=600&fit=crop&auto=format" alt="Rumah Makan Sunda Asri">
+                </div>
+                <div class="card-info">
+                    <div>
+                        <div class="card-header-meta">
+                            <span class="kategori">Resto</span>
+                            <span id="status-detail" class="status-toko"></span>
+                        </div>
+                        <h3>Rumah Makan Sunda Asri</h3>
+                        <div class="jam-operasional"></div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="rating">⭐ 4.8</div>
+                        <div class="lokasi">📍 Cikidang<span class="jarak"></span></div>
+                    </div>
+                </div>
+                <div class="btn-detail" data-lang-key="btninfo">comingsoon</div>
+                <ul class="jadwal-list">
+                    <li data-hari="0" data-buka="540" data-tutup="1260"><span class="jam">9.00 am–9.00 pm</span></li>
+                    <li data-hari="1" data-buka="540" data-tutup="1260"><span class="jam">9.00 am–9.00 pm</span></li>
+                    <li data-hari="2" data-buka="540" data-tutup="1260"><span class="jam">9.00 am–9.00 pm</span></li>
+                    <li data-hari="3" data-buka="540" data-tutup="1260"><span class="jam">9.00 am–9.00 pm</span></li>
+                    <li data-hari="4" data-buka="540" data-tutup="1260"><span class="jam">9.00 am–9.00 pm</span></li>
+                    <li data-hari="5" data-buka="540" data-tutup="1260"><span class="jam">9.00 am–9.00 pm</span></li>
+                    <li data-hari="6" data-buka="540" data-tutup="1320"><span class="jam">9.00 am–10.00 pm</span></li>
+                </ul>
+            </a>
+            <!--akkhir page toko-->
+            <!--awal page toko-->
+            <a href="" class="card-toko" data-lat="-6.8143" data-lon="107.1451" data-kategori="hidden">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1529563021893-cc83c992d75d?w=800&h=600&fit=crop&auto=format" alt="Angkringan Malam Cianjur">
+                </div>
+                <div class="card-info">
+                    <div>
+                        <div class="card-header-meta">
+                            <span class="kategori">Hidden</span>
+                            <span id="status-detail" class="status-toko"></span>
+                        </div>
+                        <h3>Angkringan Malam Cianjur</h3>
+                        <div class="jam-operasional"></div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="rating">⭐ 4.1</div>
+                        <div class="lokasi">📍 Solokpandan<span class="jarak"></span></div>
+                    </div>
+                </div>
+                <div class="btn-detail" data-lang-key="btninfo">comingsoon</div>
+                <ul class="jadwal-list">
+                    <li data-hari="0" data-buka="1020" data-tutup="1380"><span class="jam">5.00 pm–11.00 pm</span></li>
+                    <li data-hari="1" data-buka="1020" data-tutup="1380"><span class="jam">5.00 pm–11.00 pm</span></li>
+                    <li data-hari="2" data-buka="1020" data-tutup="1380"><span class="jam">5.00 pm–11.00 pm</span></li>
+                    <li data-hari="3" data-buka="1020" data-tutup="1380"><span class="jam">5.00 pm–11.00 pm</span></li>
+                    <li data-hari="4" data-buka="1020" data-tutup="1380"><span class="jam">5.00 pm–11.00 pm</span></li>
+                    <li data-hari="5" data-libur="true"><span class="jam">Closed</span></li>
+                    <li data-hari="6" data-buka="1020" data-tutup="1410"><span class="jam">5.00 pm–11.30 pm</span></li>
+                </ul>
+            </a>
+            <!--akkhir page toko-->
+        </section>
+
+    </main>
+
+</body>
+</html>
