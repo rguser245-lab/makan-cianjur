@@ -1,0 +1,761 @@
+/* style-detail.css */
+
+/* --- KONFIGURASI WARNA VARIABEL --- */
+:root {
+    --bg-body: #f9fafb;     
+    --bg-card: #ffffff;
+    --text-utama: #111827;  
+    --text-muted: #6b7280;  
+    --border-warna: #f3f4f6; 
+    --bg-tombol-kembali: #f9fafb;
+    --text-tombol-kembali: #111827;
+    --bg-price: #f9fafb;
+    --header-border: #e5e7eb; 
+    --accent: #111827;       
+    --shadow-card: rgba(148, 163, 184, 0.05);
+}
+
+body.dark-theme {
+    --bg-body: #111827;     
+    --bg-card: #1f2937;     
+    --text-utama: #f9fafb;  
+    --text-muted: #9ca3af;  
+    --border-warna: #374151; 
+    --bg-tombol-kembali: #111827;
+    --text-tombol-kembali: #f9fafb;
+    --bg-price: #111827;
+    --header-border: #374151;
+    --accent: #111827;
+    --shadow-card: rgba(0, 0, 0, 0.2);
+}
+
+/* --- TAMPILAN DASAR --- */
+* { 
+    box-sizing: border-box; 
+    margin: 0; padding: 0; 
+    font-family: '-apple-system', BlinkMacSystemFont, sans-serif; 
+    -webkit-tap-highlight-color: transparent; 
+}
+body { 
+    background-color: var(--bg-body); 
+    color: var(--text-utama); 
+    min-height: 100vh; 
+    display: flex; 
+    flex-direction: column; 
+    transition: background 0.4s ease, color 0.4s ease; 
+}
+main { 
+    flex-grow: 1; 
+    max-width: 1000px; 
+    width: 100%; 
+    margin: 0 auto; 
+    padding: 16px 12px; 
+}
+
+/* --- HEADER NAVIGATION --- */
+header { 
+    background-color: var(--bg-card); 
+    padding: 16px; 
+    border-bottom: 1px solid var(--header-border); 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    position: sticky; 
+    top: 0; 
+    z-index: 100; 
+    transition: background 0.4s ease, border-color 0.4s ease; 
+}
+.logo { 
+    font-size: 19px; 
+    font-weight: 800; 
+    color: #e63946; 
+    letter-spacing: -0.7px; 
+    text-decoration: none; 
+}
+nav { 
+    display: flex; 
+    align-items: center; 
+}
+nav a { 
+    text-decoration: none; 
+    color: var(--text-muted); 
+    font-weight: 600; 
+    font-size: 14px; 
+    padding: 8px 6px; 
+}
+
+/* --- STRUKTUR PRODUK & GAMBAR (LANSKAP UKURAN AWAL) --- */
+.product-container { 
+    display: flex; 
+    flex-direction: column; 
+    background-color: var(--bg-card);
+    border-radius: 20px; 
+    border: 1px solid var(--border-warna); 
+    box-shadow: 0 4px 20px var(--shadow-card); 
+    overflow: hidden; 
+    transition: background 0.4s, 
+    border-color 0.4s;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+    box-sizing: border-box !important;
+}
+.product-image { 
+    width: 100%; 
+    height: 220px; 
+    background: #e5e7eb; 
+}
+.product-image img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+}
+.product-info { 
+    padding: 20px; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 16px; 
+}
+
+/* --- BADGE & INFO TEXT --- */
+.badge { 
+    background-color: rgba(230, 57, 70, 0.1); 
+    color: #e63946; 
+    padding: 6px 12px; 
+    border-radius: 30px; 
+    font-size: 11px; 
+    font-weight: 800; 
+    text-transform: uppercase; 
+    display: inline-block; 
+    width: fit-content; 
+}
+h1 { 
+    font-size: 22px; 
+    font-weight: 800; 
+    color: var(--text-utama); 
+    margin-top: 8px; 
+}
+.meta-info { 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 8px; 
+    font-size: 13px; 
+    font-weight: 700; 
+    align-items: center; 
+}
+.ulasan { 
+    color: var(--text-muted); 
+    font-weight: 500; 
+}
+.lokasi-singkat { 
+    color: var(--text-muted); 
+    font-weight: 500; 
+}
+.status-buka-tutup { 
+    font-weight: 800; 
+}
+.deskripsi { 
+    font-size: 14px; 
+    color: var(--text-muted); 
+    line-height: 1.6; 
+    font-weight: 500; 
+}
+
+/* ========================================================== */
+/* SEKSYEN BARU: RATING KOMPONEN MULTI-APLIKASI */
+/* ========================================================== */
+.app-reviews-section { 
+    margin-top: 4px; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 8px; 
+}
+.section-sub-title { 
+    font-size: 12px; 
+    font-weight: 700; 
+    color: var(--text-utama); 
+    text-transform: uppercase; 
+    letter-spacing: 0.5px; 
+}
+.app-reviews-grid { 
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 10px; 
+}
+
+.app-review-card {
+    background-color: var(--bg-body); 
+    border: 1px solid var(--border-warna); 
+    border-radius: 12px; 
+    padding: 12px; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 3px; 
+    transition: background 0.3s, border-color 0.3s;
+}
+.app-brand { 
+    display: flex; 
+    align-items: center; 
+    gap: 6px; 
+}
+.app-dot { 
+    width: 8px; 
+    height: 8px; 
+    border-radius: 50%; 
+    display: inline-block; 
+}
+.app-brand h4 { 
+    font-size: 13px; 
+    font-weight: 700; 
+    color: var(--text-utama); 
+}
+.app-rating-val { 
+    font-size: 15px; 
+    font-weight: 800; 
+    color: var(--text-utama); 
+    margin-top: 2px; 
+    }
+.app-meta { 
+    font-size: 11px; 
+    color: var(--text-muted); 
+    font-weight: 500; 
+}
+
+/* --- RESPONSIVE GOOGLE MAPS WRAPPER --- */
+.details-section { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 12px; 
+    margin-top: 8px; 
+}
+.details-section h2 { 
+    font-size: 16px; 
+    font-weight: 800; 
+}
+.map-wrapper { 
+    width: 100%; 
+    height: 220px; 
+    border-radius: 12px; 
+    overflow: hidden; 
+    border: 1px solid var(--border-warna); 
+}
+.map-wrapper iframe { 
+    width: 100%; 
+    height: 100%; 
+}
+
+.btn-gmaps { 
+    background-color:#e63946;
+    color: var(--text-utama); 
+    text-align: center; 
+    text-decoration: none;
+    padding: 12px; 
+    border-radius: 10px; 
+    font-size: 12px; 
+    font-weight: 700; 
+    border: 1px solid var(--border-warna); 
+    transition: background 0.2s, transform 0.1s ease;
+}
+.btn-gmaps:active { 
+    background-color: #b81d24; 
+    transform: scale(0.97);
+}
+
+/* --- SEKSYEN MENU DIGITAL & ESTIMASI HARGA --- */
+.menu-section { 
+    margin-top: 14px; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 6px; 
+    }
+.menu-section h2 { 
+    font-size: 16px; 
+    font-weight: 800; 
+    }
+.menu-subtitle { 
+    font-size: 12px; 
+    color: var(--text-muted); 
+    font-weight: 600; 
+    margin-bottom: 6px; 
+}
+.menu-grid { 
+    display: grid; 
+    grid-template-columns: 1fr; 
+    gap: 12px; 
+}
+
+.menu-card { 
+    display: flex; 
+    background-color: var(--bg-body); 
+    border: 1px solid var(--border-warna); 
+    border-radius: 12px; 
+    overflow: hidden; 
+    transition: background 0.3s; 
+}
+.menu-img-wrapper { 
+    position: relative; 
+    width: 90px; 
+    height: 90px; 
+    flex-shrink: 0; 
+    background-color: #e5e7eb; 
+}
+.menu-img-wrapper img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+}
+.menu-badge { 
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    right: 0; 
+    background: rgba(230, 57, 70, 0.9); 
+    color: white; 
+    font-size: 8px; 
+    font-weight: 800; 
+    text-align: center; 
+    padding: 2px 0; 
+    text-transform: uppercase; 
+}
+.menu-details { padding: 10px 12px; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between; 
+    flex-grow: 1; 
+}
+.menu-details h4 { 
+    font-size: 13px; 
+    font-weight: 700; 
+    color: var(--text-utama); 
+}
+.menu-desc { 
+    font-size: 11px; 
+    color: var(--text-muted); 
+    line-height: 1.4; margin: 2px 0; 
+    display: -webkit-box; 
+    -webkit-line-clamp: 2; 
+    -webkit-box-orient: vertical; 
+    overflow: hidden; 
+}
+.menu-price { 
+    font-size: 12px; 
+    font-weight: 800; 
+    color: #e63946; 
+}
+
+/* --- TOMBOL PESAN ONLINE MULTIFUNGSI --- */
+.online-order-section { 
+    margin-top: 20px; 
+    padding-top: 15px; 
+    border-top: 1px dashed var(--border-warna); 
+}
+.online-order-section h3 { 
+    font-size: 13px; 
+    font-weight: 700; 
+    margin-bottom: 10px; 
+    color: var(--text-utama); 
+    }
+.order-buttons-grid { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 8px; 
+    margin-bottom: 15px; 
+}
+
+.btn-order { 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 6px; 
+    padding: 10px 4px; 
+    font-size: 11px; 
+    font-weight: 700; 
+    text-align: center; 
+    text-decoration: none; 
+    border-radius: 10px; 
+    color: white !important; 
+    transition: transform 0.1s ease; 
+}
+.btn-order:active { 
+    transform: scale(0.95); 
+    }
+.btn-gofood { 
+    background-color: #e02c2c; 
+}
+.btn-grabfood { 
+    background-color: #00b14f; 
+}
+.btn-shopeefood { 
+background-color: #ee4d2d; 
+}
+
+/* --- BUTTON UTAMA DI BAWAH --- */
+.action-buttons { 
+    display: flex; 
+    gap: 12px; 
+    margin-top: 10px; 
+}
+.btn { 
+    flex: 1; 
+    text-align: center; 
+    text-decoration: none; 
+    padding: 14px; 
+    font-size: 13px; 
+    font-weight: 700; 
+    border-radius: 12px; 
+    transition: transform 0.1s; 
+}
+.btn:active { 
+    transform: scale(0.97); 
+}
+.btn-kembali { 
+    background-color: var(--bg-tombol-kembali); 
+    color: var(--text-tombol-kembali); 
+    border: 1px solid var(--border-warna); 
+}
+.btn-pesan { 
+    background-color: #e63946; 
+    color: white; 
+    border: 1px solid #e63946;
+    box-shadow: 0 4px 12px rgba(230, 57, 70, 0.2); 
+}
+
+/* --- FOOTER LAYOUT --- */
+footer { 
+    background-color: var(--bg-card); 
+    border-top: 1px solid var(--header-border); 
+    padding: 32px 16px 24px 16px; 
+    margin-top: 40px; 
+    transition: background 0.4s, border-color 0.4s; 
+}
+.footer-container { 
+    max-width: 1000px; 
+    margin: 0 auto; 
+    display: grid; 
+    grid-template-columns: 1fr; 
+    gap: 24px; 
+    padding-bottom: 20px; 
+    border-bottom: 1px solid var(--border-warna); 
+}
+.footer-info h4, .footer-social h4 { 
+    font-size: 14px; font-weight: 700; 
+    color: var(--text-utama); 
+    margin-bottom: 12px; 
+    text-transform: uppercase; 
+    letter-spacing: 0.5px; 
+}
+.footer-info p, .footer-social a { 
+    font-size: 13px; 
+    color: var(--text-muted); 
+    text-decoration: none; 
+    display: block; 
+    margin-bottom: 8px; 
+    line-height: 1.6; 
+}
+.footer-copyright { 
+    text-align: center; 
+    font-size: 12px; 
+    color: var(--text-muted); 
+    padding-top: 20px; 
+    font-weight: 500; 
+}
+
+/* --- DESKTOP VIEW CHANGES (> 768px) --- */
+@media (min-width: 768px) {
+    .product-container { 
+        flex-direction: column; 
+    } /* Tetap lurus kebawah agar landscape foto terjaga */
+    .product-image { 
+        height: 380px; 
+        } /* Foto lebih lebar dan pas di monitor besar */
+    .product-info { 
+        padding: 30px; 
+    }
+    h1 { 
+        font-size: 28px; 
+    }
+    .app-reviews-grid { 
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 14px; 
+    } /* Berjejer 4 kolom di komputer */
+    .menu-grid { 
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 16px; 
+    } /* Berjejer 2 kolom di komputer */
+        
+    .footer-container { grid-template-columns: 1fr 1fr; }
+}
+
+/* ========================================================== */
+/* CONFIG TOGGLE SWITCH MINIMALIS (BULATAN POLOS HITAM/PUTIH) */
+/* ========================================================== */
+.theme-switch-container { 
+    display: flex; 
+    align-items: center; 
+    margin-left: 14px; 
+}
+.theme-switch { 
+    position: relative; 
+    display: inline-block; 
+    width: 46px; 
+    height: 24px; 
+    cursor: pointer; 
+}
+.theme-switch input { 
+    opacity: 0; 
+    width: 0; 
+    height: 0; 
+}
+
+.slider { 
+    position: absolute; 
+    top: 0; left: 0; 
+    right: 0; 
+    bottom: 0; 
+    background-color: #e5e7eb; 
+    border: 1px solid var(--header-border); 
+    border-radius: 30px; 
+    transition: background-color 0.3s ease; 
+}
+.slider::before { 
+    position: absolute; 
+    content: ""; 
+    height: 18px; 
+    width: 18px; 
+    left: 2px; 
+    bottom: 2px; 
+    background-color: #111827; 
+    border-radius: 50%; 
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15); 
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s; 
+}
+
+body.dark-theme .slider { 
+    background-color: var(--accent); 
+    border-color: var(--accent); 
+}
+body.dark-theme .slider::before { 
+transform: translateX(22px); 
+content: ""; 
+background-color: #ffffff; 
+}
+
+.footer-info p a { 
+    color: inherit !important; 
+    text-decoration: none !important; 
+    transition: color 0.2s ease; 
+}
+.footer-info p a:hover, .footer-social a:hover { 
+    color: #e63946 !important; 
+    text-decoration: underline !important; 
+}
+
+/* --- STYLE TOMBOL ALIH BAHASA PREMIUM --- */
+.btn-lang {
+    background: transparent;
+    border: 1px solid var(--header-border);
+    color: var(--text-utama);
+    padding: 6px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-lang:hover {
+    background-color: var(--border-warna);
+    transform: translateY(-1px);
+}
+
+.btn-lang:active {
+    transform: translateY(0);
+}
+
+/* --- CSS STRUKTUR SIDEBAR MENU HALAMAN DETAIL --- */
+.header-left { 
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
+}
+.btn-hamburger { 
+    background: transparent; 
+    border: none; 
+    color: var(--text-utama); 
+    font-size: 24px; 
+    cursor: pointer;
+    padding: 4px 8px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    transition: transform 0.2s; 
+}
+.btn-hamburger:hover { 
+    transform: scale(1.1); 
+}
+
+.sidebar { 
+    position: fixed; 
+    top: 0; left: -280px; 
+    width: 280px; 
+    height: 100%; 
+    background-color: var(--bg-card); 
+    border-right: 1px solid var(--header-border); 
+    z-index: 2000; 
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.1); 
+}
+.sidebar.active { 
+    left: 0; 
+}
+.sidebar-overlay { 
+    position: fixed; 
+    top: 0; left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: rgba(0, 0, 0, 0.4); 
+    z-index: 1999; 
+    opacity: 0; 
+    pointer-events: none; 
+    transition: opacity 0.3s ease; 
+}
+.sidebar-overlay.active { opacity: 1; 
+    pointer-events: auto; 
+}
+.btn-close-sidebar { 
+    position: absolute; 
+    top: 14px; 
+    right: 16px; 
+    background: transparent; 
+    border: none; 
+    font-size: 28px; 
+    color: var(--text-muted); 
+    cursor: pointer; 
+}
+.sidebar-content { 
+    padding: 60px 24px 24px 24px; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 24px; height: 100%; 
+}
+.sidebar-section h4 { 
+    color: var(--text-utama); 
+    font-size: 16px; 
+    margin-bottom: 12px; 
+    font-weight: 600; 
+}
+.sidebar-section p, .sidebar-section a { 
+    color: var(--text-muted);
+    font-size: 14px; 
+    text-decoration: none;
+    display: block; 
+    margin-bottom: 8px; 
+}
+.sidebar-section a:hover { 
+    color: #e63946; 
+}
+.theme-section { 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+}
+.sidebar-label { 
+    font-size: 15px; 
+    font-weight: 500; 
+    color: var(--text-utama); 
+}
+.sidebar-divider { 
+    border: 0; 
+    border-top: 1px solid var(--header-border); 
+    margin: 0; 
+}
+.sidebar-copyright { 
+    margin-top: auto; 
+    font-size: 12px; 
+    color: var(--text-muted); 
+    text-align: center; 
+    padding-bottom: 16px; 
+}
+/* Tambahkan ini di paling bawah style-detail.css */
+.status-detail { 
+    font-weight: 800; 
+    font-size: 13px; 
+    }
+.status-buka { 
+    color: #2ec4b6; 
+}  /* Warna Hijau */
+.status-tutup { 
+    color: #e63946; 
+} /* Warna Merah */
+
+/*==========================================================
+JADWAL OPERASIONAL MINGGUAN (GOOGLE MAPS STYLE)
+============================================================= */
+.jadwal-operasional-container {
+    background-color: var(--bg-card); /* Otomatis berubah putih/abu gelap sesuai tema */
+    border: 1px solid var(--border-warna);
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.jadwal-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Jarak antar baris hari */
+}
+
+.jadwal-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13.5px;
+    color: var(--text-utama);
+    padding-bottom: 6px;
+    border-bottom: 1px dashed var(--border-warna);
+}
+
+/* Menghilangkan garis putus-putus di baris hari terakhir */
+.jadwal-list li:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.jadwal-list li .hari {
+    font-weight: 500;
+    color: var(--text-muted); /* Warna teks hari agak samar ala Google Maps */
+}
+
+.jadwal-list li .jam {
+    font-weight: 600;
+    color: var(--text-utama);
+    text-align: right;
+}
+
+/* === HIGHLIGHT KHUSUS UNTUK HARI INI === */
+.jadwal-list li.hari-ini {
+    background-color: var(--bg-body); /* Beri background penanda */
+    padding: 8px 12px;
+    border-radius: 8px;
+    border-bottom: none; /* Hapus garis putus-putus khusus hari ini */
+}
+
+.jadwal-list li.hari-ini .hari {
+    font-weight: 800;
+    color: #e63946; /* Teks hari berubah merah mengikuti warna aksen utama web kamu */
+}
+
+.jadwal-list li.hari-ini .jam {
+    font-weight: 800;
+    color: var(--text-utama);
+}
+
